@@ -770,44 +770,44 @@ function CreateFaceUnwrap()
 
 
 // Create ground with face around the edges
-function CreateGround(height)
-{
-    let ground = BABYLON.Mesh.CreateGround("ground", 96, 96, 1, scene);
-    ground.position.y = height;
-    BABYLON.Effect.ShadersStore["fadeVertexShader"] = "precision highp float;\r\n"+
-    "attribute vec3 position;\r\n"+
-    "attribute vec3 normal;\r\n"+
-    "attribute vec2 uv;\r\n"+
-    "uniform mat4 worldViewProjection;\r\n"+
-    "varying vec3 vNormal;\r\n"+
-    "varying vec2 vUV;\r\n"+
-    "void main() {\r\n"+
-    "    vec4 p = vec4(position, 1.);\r\n"+
-    "    vNormal = normal;\r\n"+
-    "    vUV = uv;\r\n"+
-    "    gl_Position = worldViewProjection * p;\r\n"+
-    "}\r\n";
-    BABYLON.Effect.ShadersStore["fadeFragmentShader"]=                "precision highp float;\r\n"+
-    "uniform mat4 worldView;\r\n"+
-    "varying vec3 vNormal;\r\n"+
-    "varying vec2 vUV;\r\n"+
-    "uniform sampler2D textureSampler;\r\n"+
-    "void main(void) {\r\n"+
-    "    vec3 n = normalize(vNormal);\r\n"+
-    "    vec3 base = texture2D(textureSampler, vUV).rgb;\r\n"+
-    "    base *= 1. - length(abs(vUV - vec2(0.5, 0.5))) * 2.;\r\n"+
-    "    gl_FragColor = vec4(base, 1.);\r\n"+
-    "}\r\n";
-    let gnd_mat =
-        new BABYLON.ShaderMaterial("shader", scene, { vertex: "fade", fragment: "fade" },
-        {
-            attributes: ["position", "normal", "uv"],
-            uniforms: ["worldViewProjection"]
-        });
-    gnd_mat.setTexture("textureSampler", new BABYLON.Texture("textures/terracota.jpg"));
-    ground.material = gnd_mat;
-    ground.isPickable = false;
-}
+// function CreateGround(height)
+// {
+//     let ground = BABYLON.Mesh.CreateGround("ground", 96, 96, 1, scene);
+//     ground.position.y = height;
+//     BABYLON.Effect.ShadersStore["fadeVertexShader"] = "precision highp float;\r\n"+
+//     "attribute vec3 position;\r\n"+
+//     "attribute vec3 normal;\r\n"+
+//     "attribute vec2 uv;\r\n"+
+//     "uniform mat4 worldViewProjection;\r\n"+
+//     "varying vec3 vNormal;\r\n"+
+//     "varying vec2 vUV;\r\n"+
+//     "void main() {\r\n"+
+//     "    vec4 p = vec4(position, 1.);\r\n"+
+//     "    vNormal = normal;\r\n"+
+//     "    vUV = uv;\r\n"+
+//     "    gl_Position = worldViewProjection * p;\r\n"+
+//     "}\r\n";
+//     BABYLON.Effect.ShadersStore["fadeFragmentShader"]=                "precision highp float;\r\n"+
+//     "uniform mat4 worldView;\r\n"+
+//     "varying vec3 vNormal;\r\n"+
+//     "varying vec2 vUV;\r\n"+
+//     "uniform sampler2D textureSampler;\r\n"+
+//     "void main(void) {\r\n"+
+//     "    vec3 n = normalize(vNormal);\r\n"+
+//     "    vec3 base = texture2D(textureSampler, vUV).rgb;\r\n"+
+//     "    base *= 1. - length(abs(vUV - vec2(0.5, 0.5))) * 2.;\r\n"+
+//     "    gl_FragColor = vec4(base, 1.);\r\n"+
+//     "}\r\n";
+//     let gnd_mat =
+//         new BABYLON.ShaderMaterial("shader", scene, { vertex: "fade", fragment: "fade" },
+//         {
+//             attributes: ["position", "normal", "uv"],
+//             uniforms: ["worldViewProjection"]
+//         });
+//     gnd_mat.setTexture("textureSampler", new BABYLON.Texture("textures/terracota.jpg"));
+//     ground.material = gnd_mat;
+//     ground.isPickable = false;
+// }
 
 
 // Because iPhone...
