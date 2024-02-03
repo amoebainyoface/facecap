@@ -798,14 +798,14 @@ function CreateGround(height)
     "    base *= 1. - length(abs(vUV - vec2(0.5, 0.5))) * 2.;\r\n"+
     "    gl_FragColor = vec4(base, 1.);\r\n"+
     "}\r\n";
-    let gnd_mat =
-        new BABYLON.ShaderMaterial("shader", scene, { vertex: "fade", fragment: "fade" },
-        {
-            attributes: ["position", "normal", "uv"],
-            uniforms: ["worldViewProjection"]
-        });
-    gnd_mat.setTexture("textureSampler", new BABYLON.Texture("textures/terracota.jpg"));
-    ground.material = gnd_mat;
+    // let gnd_mat =
+    //     new BABYLON.ShaderMaterial("shader", scene, { vertex: "fade", fragment: "fade" },
+    //     {
+    //         attributes: ["position", "normal", "uv"],
+    //         uniforms: ["worldViewProjection"]
+    //     });
+    // gnd_mat.setTexture("textureSampler", new BABYLON.Texture("textures/terracota.jpg"));
+    // ground.material = gnd_mat;
     ground.isPickable = false;
 }
 
