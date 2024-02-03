@@ -870,7 +870,7 @@ async function CreateScene(engine, canvas)
 
     // free camera
     camera = new BABYLON.ArcRotateCamera("Camera", -1.57, 1.57, 20, BABYLON.Vector3.Zero(), scene);
-    camera.wheelPrecision = 30;
+    camera.wheelPrecision = 0.5;
     camera.setTarget(new BABYLON.Vector3(0, 0, 0));
     camera.lowerRadiusLimit = 5;
     camera.upperRadiusLimit = 32;
